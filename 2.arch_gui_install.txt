@@ -1,0 +1,43 @@
+安装图形基础服务
+sudo pacman -Syu
+sudo pacman -S xorg xorg-server xorg-xinit
+若从startx启动则安装xinit，若从管理器启动可不安装xinit
+
+安装i3-wm
+sudo pacman -S xfce4-terminal i3-gaps feh compton
+---------------------------------------------------
+
+安装xfce4 desktop
+sudo pacman -S xfce4 xfce4-goodies
+
+安装budgie desktop
+sudo pacman -S budgie-desktop
+
+安装gnome desktop
+sudo pacman -S gnome gnome-extra
+sudo systemctl enable gdm.service
+sudo systemctl start gdm.service
+
+安装cinnamon desktop
+sudo pacman -S cinnamon nemo-fileroller
+sudo pacman -S gdm.service
+sudo systemctl enable gdm.service
+sudo systemctl start gdm.service
+
+安装kde desktop
+sudo pacman -S plasma
+
+安装mate desktop
+sudo pacman -S mate mate-extra
+
+安装deepin desktop
+sudo pacman -S deepin deepin-extra
+
+安装enlightenment desktop
+sudo pacman -S enlightenment
+
+安装lxde desktop
+sudo pacman -S lxde
+
+安装lxqt desktop
+sudo pacman -S lxqt

@@ -1,0 +1,120 @@
+Arch Linux基本系统安装
+
+检测网络
+# ping -c 3 www.baidu.com
+	1. 如检测网络失败
+	# ip link
+	# ip link set interface up
+	# dhcpcd interface
+	# ping -c 3 www.baidu.com
+
+检测是否支持efi
+# efivar -l
+
+查看磁盘分区
+# fdisk -l
+
+磁盘分区
+# fdisk /dev/sda
+	n -->新建分区
+	d -->删除分区
+	w -->写入磁盘
+	此处分2个分区，2G的swap分区：/dev/sda1，主分区：/dev/sda2
+
+查看分区
+# cat /proc/partitions
+
+格式分区
+# mkswap /dev/sda1
+# mkfs.ext4 /dev/sda2
+# swapon /dev/sda1
+
+挂载/dev/sda2
+# mount /dev/sda2 /mnt
+	如果有其他分区，如：/home, /boot, /var等
+	mkdir /mnt/home /mnt/boot /mnt/var
+	mount /dev/sda3 /mnt/home 等
+
+调整镜像源
+# vi /etc/pacman.d/mirrorlist
+	将需要的源放在最前端
+
+更新并安装基本内容
+# pacman -Syy
+# pacstrap -i /mnt base base-devel
+
+生成分区表并分区到微系统
+# genfstab -U -p /mnt >> /mnt/etc/fstab
+# arch-chroot /mnt /bin/bash
+
+设置编码
+# vi /etc/locale.gen
+	删除en_US.UTF-8 zh_US.UTF-8开头的 #
+# locale-gen
+# echo LANG=en_US.UTF-8 > /etc/locale.conf
+# export LANG=en_US.UTF-8
+
+设置时区
+# rm -rf /etc/localtime
+# ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# hwclock --systohc --utc
+
+编辑hostname
+# echo myhostname > /etc/hostname
+# vi /etc/hosts
+内容如下：
+127.0.0.1    localhost
+127.0.1.1    myhostname
+
+::1      localhost ip6-localhost ip6-loopback
+ff02::1  ip6-allnodes
+ff02::2  ip6-allrouters
+
+设置网络
+# ip link
+# systemctl enable dhcpcd@interfacename.service
+或者临时设置
+# ip link
+# ip link set interfacename up
+# dhcpcd interfacename
+
+安装后wifi脚本：
+#! /usr/bin/fish
+
+# #pacman -S iw wpa_supplicant
+# #ip link  --> interfacename
+# #ip link set interfacename up
+# #wpa_passphrase wifiname "wifipwd" > /etc/wpa_supplicant.conf
+# #wpa_supplicant -B -i interfacename -c /etc/wpa_supplicant.conf
+# # dhcpcd interfacename
+
+sudo ip link set wlp2s0 up
+sudo wpa_supplicant -B -i wlp2s0 -c /etc/wpa_supplicant.conf
+sudo dhcpcd wlp2s0
+
+设置root密码
+# passwd root
+
+设置新用户
+# useradd -m -g users -G wheel -s /bin/bash username
+# passwd username
+
+安装相关软件
+# pacman -S vim net-tools openssh iw wpa_supplicant
+
+提升username权限
+# visudo
+	username ALL(ALL:ALL)=ALL
+
+开启sshd服务
+# systemctl enable sshd.service
+
+安装grub
+# pacman -S grub os-prober
+# grub-install --target=i386-pc --recheck /dev/sda
+# grub-mkconfig -o /boot/grub/grub.cfg
+
+退出卸载重启
+exit
+umount [/mnt/home /mnt/boot /mnt/var] /mnt
+reboot
