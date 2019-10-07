@@ -5,6 +5,16 @@ sudo pacman -S xorg xorg-server xorg-xinit
 
 安装i3-wm
 sudo pacman -S xfce4-terminal i3-gaps feh compton
+设置i3启动及背景透明
+sudo cp /etc/X11/xinit/xinitrc ~/.xinitrc
+editr .xinitrc
+删除fi后的所有行并加入以下2行代码
+exec compton -b &
+exec i3
+tty下开启i3
+startx
+开启网络
+wifi
 ---------------------------------------------------
 
 安装xfce4 desktop
