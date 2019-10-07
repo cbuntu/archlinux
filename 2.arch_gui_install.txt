@@ -1,14 +1,14 @@
 安装图形基础服务
 sudo pacman -Syu
 sudo pacman -S xorg xorg-server xorg-xinit
-若从startx启动则安装xinit，若从管理器启动可不安装xinit
+若从startx启动则安装xinit，若从显示管理器启动可不安装xinit
 
 安装i3-wm
 sudo pacman -S xfce4-terminal i3-gaps feh compton
 设置i3启动及背景透明
 sudo cp /etc/X11/xinit/xinitrc ~/.xinitrc
 editr .xinitrc
-删除fi后的所有行并加入以下2行代码
+删除fi后的所有行并加入以下2行代码,背景透明及i3
 exec compton -b &
 exec i3
 tty下开启i3

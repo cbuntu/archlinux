@@ -1,0 +1,84 @@
+进入i3
+startx
+
+安装字体
+sudo pacman -S ttf-liberation
+sudo pacman -S adobe-source-han-sans-cn-fonts
+sudo pacman -S adobe-source-han-sans-tw-fonts
+sudo pacman -S adobe-source-han-sans-jp-fonts
+sudo pacman -S ttf-wps-fonts
+sudo pacman -S ttf-font-awesome
+sudo pacman -S ttf-ubuntu-font-family
+
+安装相关软件
+sudo pacman install firefox leafpad nautilus zathura ranger rofi fish
+
+配置rofi
+vim ~/.config/i3/config, 注释原来的$mod+d
+bindsym $mod+d exec rofi -show run
+修改后mod + shift + r刷新下
+
+设置透明壁纸(firefox)
+feh --bg-fill ~/Pictures/w7.jpg
+
+设置开机启动壁纸
+1.在.xinitrc中设置
+sudo vim .xinitrc
+exec feh --bg-fill ~/Pictures/w7.jpg &
+2.在~/.config/i3/config设置
+vim ~/.config/i3/config
+exec_always exec feh --bg-fill ~/Pictures/w7.jpg
+
+设置xfce4-terminal样式
+无边框，ubunut mono 16,无滚动，背景透明等
+
+配置fish shell
+which fish
+chsh -s /usr/bin/fish
+reboot
+
+配置yaourt安装需要的源
+sudo vim /etc/pacman.conf
+在最后加入如下4行
+[archlinuxcn]
+#The Chinese Arch Linux communities packages.
+SigLevel = Optional TrustAll
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+
+安装yaourt
+sudo pacman -Syyu
+sudo pacman -S yaourt
+
+安装polybar
+sudo pacman -Syyu
+yaourt -S polybar
+yaout -S ttf-unifont
+yaout -S siji-git
+sudo pacman -S xorg-fonts-misc
+
+mkdir ~/.config/polybar
+install -Dm644 /usr/share/doc/polybar/config $HOME/.config/polybar/config
+cd ~/.config/polybar
+touch launch.sh
+在launch.sh中加入如下代码
+#!/usr/bin/env sh
+
+# Terminate already running bar instances
+killall -q polybar
+
+# Wait until the processes have been shut down
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+# Launch bar1 and bar2
+#polybar bar1 &
+#polybar bar2 &
+polybar example &
+
+echo "Bars launched..."
+
+在~/.config/i3/config中配置polybar
+将i3自带的i3states设置注释（最后），加入如下代码：
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+退出i3重启动看效果
+mod + shift + e 
