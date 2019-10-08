@@ -41,11 +41,14 @@ Arch Linux基本系统安装
 
 更新并安装基本内容
 # pacman -Syy
-# pacstrap -i /mnt base base-devel
+# pacstrap -i /mnt base linux base-devel
 
 生成分区表并分区到微系统
 # genfstab -U -p /mnt >> /mnt/etc/fstab
 # arch-chroot /mnt /bin/bash
+
+安装相关软件
+# pacman -S vim net-tools openssh iw wpa_supplicant dhcpcd
 
 设置编码
 # vi /etc/locale.gen
@@ -99,9 +102,6 @@ sudo dhcpcd wlp2s0
 # useradd -m -g users -G wheel -s /bin/bash username
 # passwd username
 
-安装相关软件
-# pacman -S vim net-tools openssh iw wpa_supplicant
-
 提升username权限
 # visudo
 	username ALL(ALL:ALL)=ALL
@@ -120,7 +120,8 @@ umount [/mnt/home /mnt/boot /mnt/var] /mnt
 reboot
 
 ------------------------------------------------------
-有时安装后重启，进入grub模式，无法自动进入系统。解决方案：
+如以上未安装linux，重启后会进入grub模式，无法进入系统，因
+无法找到linux内核。可通过livecd进入再安装，并执行下面操作。
 grub> root='hd0,gpt3'
 grub> ls /
 ls后会看到msdos1字样，再执行以下命令：可用Tab补全

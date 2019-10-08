@@ -5,13 +5,13 @@ startx
 sudo pacman -S ttf-liberation
 sudo pacman -S adobe-source-han-sans-cn-fonts
 sudo pacman -S adobe-source-han-sans-tw-fonts
-sudo pacman -S adobe-source-han-sans-jp-fonts
+#sudo pacman -S adobe-source-han-sans-jp-fonts
 sudo pacman -S ttf-wps-fonts
-sudo pacman -S ttf-font-awesome
+#sudo pacman -S ttf-font-awesome
 sudo pacman -S ttf-ubuntu-font-family
 
 安装相关软件
-sudo pacman install firefox leafpad nautilus zathura ranger rofi fish
+sudo pacman install firefox leafpad nautilus zathura ranger rofi fish fcitx-im fcitx-configtool
 
 配置rofi
 vim ~/.config/i3/config, 注释原来的$mod+d
