@@ -11,7 +11,7 @@ sudo pacman -S ttf-wps-fonts
 sudo pacman -S ttf-ubuntu-font-family
 
 安装相关软件
-sudo pacman install firefox leafpad nautilus zathura ranger rofi fish fcitx-im fcitx-configtool
+sudo pacman install firefox leafpad nautilus zathura ranger neofetch rofi fish fcitx-im fcitx-configtool
 
 配置rofi
 vim ~/.config/i3/config, 注释原来的$mod+d
@@ -81,4 +81,16 @@ echo "Bars launched..."
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 退出i3重启动看效果
-mod + shift + e 
+mod + shift + r 
+
+------------------------------------------------------------------
+安装软件
+sudo pacman -S tmux
+sudo pacman -S sdcv    # -> .dic/
+sudo pacman -S python-pip
+sudo pacman -S visual-studio-code-bin
+pip3 install mu-editor --user  # ln -s $HOME/.local/bin/mu-editor /usr/bin/mu-editor
+#python-kt
+sudo pacman -S python-pmw
+#sudo pacman -S simplescreenrecorder
+sudo pacman -S kazam
