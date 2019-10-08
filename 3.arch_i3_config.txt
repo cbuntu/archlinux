@@ -94,3 +94,4 @@ pip3 install mu-editor --user  # ln -s $HOME/.local/bin/mu-editor /usr/bin/mu-ed
 sudo pacman -S python-pmw
 #sudo pacman -S simplescreenrecorder
 sudo pacman -S kazam
+sudo pacman -S lxd
