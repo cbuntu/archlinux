@@ -118,3 +118,15 @@ sudo dhcpcd wlp2s0
 exit
 umount [/mnt/home /mnt/boot /mnt/var] /mnt
 reboot
+
+------------------------------------------------------
+有时安装后重启，进入grub模式，无法自动进入系统。解决方案：
+grub> root='hd0,gpt3'
+grub> ls /
+ls后会看到msdos1字样，再执行以下命令：可用Tab补全
+grub> '(hd0,msdos1)'
+grub> linux /boot/vmlinuz-linux root=/dev/sda1
+grub> initrd /boot/initramfs-linux.img
+grub> boot
+执行完上步boot可进入系统，再重新生成grub.cfg，重启即可：
+sudo grub-mkconfig -o /boot/grub/grub.cfg
