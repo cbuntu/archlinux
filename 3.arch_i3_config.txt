@@ -89,7 +89,7 @@ sudo pacman -S tmux
 sudo pacman -S sdcv    # -> $HOME/.stardict/dic/   alias cv "sdcv -u cn"  funcsave cv
 sudo pacman -S python-pip
 sudo pacman -S visual-studio-code-bin
-pip3 install mu-editor --user  # sudo ln -s $HOME/.local/bin/mu-editor /usr/bin/mu-editor
+pip3 install mu-editor --user  # sudo ln -P $HOME/.local/bin/mu-editor /usr/bin/mu-editor
 #python-kt
 sudo pacman -S python-pmw
 sudo pacman -S simplescreenrecorder

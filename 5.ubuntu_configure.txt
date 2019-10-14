@@ -1,0 +1,31 @@
+1. install 文泉驿 微米黑字体
+-----------------------------
+sudo apt install fonts-wqy-microhei
+
+2. install 文泉驿 正黑字体
+----------------------------
+sudo apt install fonts-wqy-zenhei
+
+3. 解决开关机a start job is running for wait for network
+---------------------------------------------------------
+systemctl show -p WantedBy network-online.target
+出现如下内容
+WanteBy=open-iscsi.service iscsid.service
+将上述service disable
+sudo systemctl disable open-iscsi.service
+
+4. fbterm
+--------------------------------------------------
+sudo apt install fbterm fbi fbcat
+
+sudo adduser $USER video
+sudo chmod u+s /usr/bin/fbterm
+
+sudo mv yong /opt
+cd /opt/yong
+sudo ./yong-tool.sh --install64
+
+vim .fbtermrc
+input-method=yong
+
+vim .yong/yong.ini
