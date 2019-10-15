@@ -29,3 +29,11 @@ vim .fbtermrc
 input-method=yong
 
 vim .yong/yong.ini
+
+6.解决firefox无法播放html5视频
+--------------------------------
+sudo apt install ubuntu-restricted-extras
+
+7. 解决firefox无声音
+--------------------------------
+sudo apt install pulseaudio
