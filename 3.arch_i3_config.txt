@@ -96,3 +96,4 @@ sudo pacman -S simplescreenrecorder
 sudo pacman -S mpv
 #sudo pacman -S kazam
 sudo pacman -S lxd
+sudo pacman -S arandr
