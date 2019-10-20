@@ -30,10 +30,16 @@ input-method=yong
 
 vim .yong/yong.ini
 
-6.解决firefox无法播放html5视频
+5.解决firefox无法播放html5视频
 --------------------------------
 sudo apt install ubuntu-restricted-extras
 
-7. 解决firefox无声音
+6. 解决firefox无声音
 --------------------------------
 sudo apt install pulseaudio
+
+7. use watchdog to shutdown quickly
+------------------------------------
+sudo apt install watchdog
+sudo systemctl enable watchdog
+sudo systemctl start watchdog
