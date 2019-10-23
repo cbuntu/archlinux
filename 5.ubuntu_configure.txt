@@ -43,3 +43,9 @@ sudo apt install pulseaudio
 sudo apt install watchdog
 sudo systemctl enable watchdog
 sudo systemctl start watchdog
+
+8. Wps中使用fcitx的中文输入法，在/usr/bin/wps wpp et(wpt)中新增如下两行
+------------------------------------
+#!/bin/bash
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE="fcitx"
