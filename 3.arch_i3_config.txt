@@ -97,3 +97,7 @@ sudo pacman -S mpv
 #sudo pacman -S kazam
 sudo pacman -S lxd
 sudo pacman -S arandr
+
+install zathura plugin zathura-pdf-poppler for archlinux
+-----------------------------------------------------------
+sudo pacman -S zathura-pdf-poppler
