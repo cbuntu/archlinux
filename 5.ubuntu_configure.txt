@@ -64,3 +64,8 @@ sudo apt install guake
 11. ubuntu 18.04 install focuswriter, a fullscreen writer
 -----------------------------------------------------
 sudo apt install focuswriter
+
+12. mocp mp3乱码解决：
+--------------------------
+vim .moc/config,
+ReadTags = no
