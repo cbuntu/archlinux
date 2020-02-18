@@ -69,3 +69,14 @@ sudo apt install focuswriter
 --------------------------
 vim .moc/config,
 ReadTags = no
+
+13. ubuntu 18.04 (mini) install tpp
+-------------------------------------
+sudo apt install tpp
+sudo apt install ruby-dev zlib1g-dev liblzma-dev libncurses5-dev libncurses5-dev
+git clone https://github.com/sup-heliotrope/ncursesw-ruby
+cd ncursesw-ruby
+sudo gem install ncursesw
+cd ..
+rm -rf ncursesw-ruby
+
