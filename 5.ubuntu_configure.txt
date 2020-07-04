@@ -80,3 +80,6 @@ sudo gem install ncursesw
 cd ..
 rm -rf ncursesw-ruby
 
+14. ubuntu 18.04 install google-earth
+-------------------------------------
+wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb
